@@ -31,6 +31,7 @@ module.exports = {
             24: "24px",
             26: "26px",
             28: "28px",
+            29: "29px",
             30: "30px",
             32: "32px",
             34: "34px",
@@ -42,6 +43,10 @@ module.exports = {
 
             gray: "#F8F8F8",
             red: "#E02025",
+
+            border: {
+                gray: "#DFE1F0"
+            },
 
             text: {
                 main: "#404456",
@@ -68,10 +73,17 @@ module.exports = {
                 xl     : "4rem",
                 "2xl"  : "10rem"
             }
+        },
+        extend: {
+            padding: {
+                full: '100%',
+            }
         }
     },
     variants: {
         extend: {}
     },
-    plugins: []
+    plugins: [
+        require('@tailwindcss/aspect-ratio')
+    ]
 }

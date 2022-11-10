@@ -1,37 +1,33 @@
 <template>
-    <div>
-        <Nuxt />
+    <div class="w-screen h-screen overflow-x-hidden bg-background font-roboto leading-none">
+      <nav-menu :data="navData"/>
+      <Nuxt />
     </div>
 </template>
 
 <script>
-export default {}
+import NavMenu from "@/components/NavMenu.vue";
+
+export default {
+  data() {
+    return {
+      navData: [
+        {
+          label: 'Калькулятор',
+          path: '/'
+        },
+        {
+          label: 'Курс рубля',
+          path: '/exchange'
+        }
+      ]
+    }
+  },
+  components: {
+    NavMenu
+  },
+  async fetch() {
+    await this.$store.dispatch('currency/fetchCurrencies')
+  }
+}
 </script>
-
-<style lang="scss">
-button,
-input,
-optgroup,
-select,
-textarea {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-html {
-    font-size: 12px;
-}
-
-body {
-    @apply font-roboto text-text-main;
-    font-size: 1.4rem;
-    overflow-x: hidden;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: transparent;
-}
-
-</style>
